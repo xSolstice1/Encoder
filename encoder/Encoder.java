@@ -11,8 +11,11 @@ public class Encoder {
 
     //method to initialize shift table using an offsetchar, type 1 = decode, else = encode
     private void initializeTable(char offSetChar, int type) {
-        
+
         int offset = 0;
+
+        //convert to uppercase
+        offSetChar = Character.toUpperCase(offSetChar);
 
         for (int i=0; i<referenceTable.length(); i++) {
             if (offSetChar == referenceTable.charAt(i)) {
@@ -45,7 +48,7 @@ public class Encoder {
         input.close();
 
         //add offsetchar encoded message
-        encoded.append(offSetChar);
+        encoded.append(Character.toUpperCase(offSetChar));
 
         //initialize shifttable using offsetchar
         initializeTable(offSetChar,2);
